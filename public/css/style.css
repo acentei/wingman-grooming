@@ -3313,6 +3313,95 @@ input#txtEmail:focus {
     padding-top: 10px;
 }
 
+.proddet-container
+{
+    margin:auto;
+    padding: 0;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.proddet-left
+{
+    float: left;
+    width: 49%;
+}
+
+.proddet-right
+{
+    float: right;
+    width: 49%;
+}
+
+.proddet-main-img
+{
+    width: 75%;
+    height: 370px;
+    overflow: hidden;
+    text-align: left;
+    margin: auto;
+    background: #fff;
+    display: block;
+    margin-top: 12px; 
+}
+
+.proddet-main-img img
+ {
+    width: auto;
+    height: 370px;
+    margin: auto;
+}
+
+.proddet-more-container
+{
+    /*width: 100%;*/
+    display:block;
+    margin-top: 20px;
+}
+
+.proddet-more-img
+{
+    width:33%;
+    height: 150px;
+    float:left;
+    overflow: hidden;
+    margin-right: 0.5%;
+}
+
+.proddet-more-img:last-child
+{
+    margin-right: 0px;
+}
+
+.proddet-more-img img
+{
+    width: auto;
+    height: 150px;
+    cursor: pointer;
+}
+
+.proddet-description
+{
+    font-size: 10pt;
+    line-height: 16px;
+    text-align: justify;
+    white-space: pre-wrap;
+    word-break: normal;
+    border: none;
+    font-family: Gotham;
+    padding: 0;
+    background-color: white;
+}
+
+.proddet-related-items
+{
+    clear: both;
+    float: none;
+    display: block;
+    width: 100%;
+}
+
+
 /**** WYSIWYG DISPLAYS****/
 /** ABOUT **/
 .about-us > p > img

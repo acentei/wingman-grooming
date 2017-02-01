@@ -94,7 +94,7 @@
 
     <div class="mobdet-holder">
         <div class="mobdet-product-price">
-            {{ $product->price }}
+            PHP {{ $product->price }}
         </div> 
 
         @if($product->stocks == 0)
@@ -106,7 +106,7 @@
                 Quantity
                 <div class="prod-hover-add">
                     <div class="prod-hover-add">
-                        <input id="prodQty" class="prh-num" type="number" min="1" max="" value="1" placeholder="1">
+                        <input id="prodQty" class="prh-num" type="number" min="1" max="{{$product->stocks}}" value="1" placeholder="1">
 
                         <input id="prodAddCart" type="button"  class="prh-btn addCart" value="ADD TO CART" data-href="{{ route('shop.index') }}" data-id="{{$product->product_id}}" data-productcode="{{$product->product_code}}" data-checkout="{{route('cart.index')}}" data-image="{{$product->photo}}" data-name="{{$product->name}}" data-stock="{{$product->stocks}}" data-price="{{$product->price}}" data-toggle = "modal" data-target = "#addCartSuccess"> 
                     </div>
@@ -120,7 +120,7 @@
 
     <div class="mobdet-properties">
         <div class="product-description">
-            {{$product->description}}
+            <pre class="product-description">{{$product->description}}</pre>
         </div>
 
         <br><br>

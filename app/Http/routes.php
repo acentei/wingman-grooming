@@ -36,7 +36,7 @@ Route::get('/wholesale-inquiry/sent', function () {
 });
 
 Route::get('/product-details', function () {    
-    return view('pages.shop.productdetails');
+    return view('pages.shop.productdetails2');
 });
 
 // Route::get('/receipt-email', function () {    
@@ -64,6 +64,7 @@ Route::resource('order','OrderController');
 Route::resource('sales','SalesController');
 Route::resource('inventory','InventoryController');
 Route::resource('shipping-cost','ShippingDetailsController');
+Route::resource('shop-product','ShopProductController');
 
 /* CUSTOM CONTROLLERS */
 Route::get('newsletter/{date}/{slug}', [
