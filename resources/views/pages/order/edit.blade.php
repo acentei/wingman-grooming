@@ -52,6 +52,13 @@
                         </select>
                     </div>       
                 </div>
+
+                <div class="form-group">   
+                    <label for="title" class="col-sm-2 control-label">Tracking Number</label>    
+                    <div class="col-sm-10">                              
+                        <input type="text" name="tracking" value="{{$order->tracing_number}}" class="form-control" required />
+                    </div>       
+                </div>
                                 
                 <div class="form-group">   
                     <label for="title" class="col-sm-2 control-label"></label>    

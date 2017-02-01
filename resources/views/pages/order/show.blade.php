@@ -61,6 +61,15 @@
                     </div>       
                 </div>  
 
+                @if($order->order_status == "Delivered")
+                    <div class="form-group">   
+                        <label for="title" class="col-sm-2 control-label">Tracking Number</label>    
+                        <div class="shop-show-col col-sm-3">                              
+                            {{$order->tracking_number}}
+                        </div>      
+                    </div> 
+                @endif
+
                 <br>
 
                 <h4><i>CUSTOMER DETAILS</i></h4>

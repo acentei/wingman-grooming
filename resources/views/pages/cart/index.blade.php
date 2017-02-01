@@ -198,6 +198,11 @@
         Notes / Special Instructions
         <input id="input-detail-note" type="text" name="notes" />
     </div>
+
+    <div class="full">
+        <input id="input-terms" name="isTracking" type="checkbox" value="1" />
+        Request for a Tracking Number        
+    </div>
     
 </div>
 

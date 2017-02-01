@@ -35,6 +35,10 @@ Route::get('/wholesale-inquiry/sent', function () {
     return view('pages.responses.wholesale');
 });
 
+Route::get('/product-details', function () {    
+    return view('pages.shop.productdetails');
+});
+
 // Route::get('/receipt-email', function () {    
 //     return view('pages.emails.receipt-email');
 // });

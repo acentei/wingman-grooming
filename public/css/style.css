@@ -649,7 +649,7 @@ ul#slide-list{
 {
     background: #101010;
     border: none;
-    /*margin-top: 4px;*/
+    margin-left: 5px;
     font-size: 9pt;
     width: 90%;
 }

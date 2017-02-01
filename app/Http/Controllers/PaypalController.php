@@ -203,6 +203,15 @@ class PaypalController extends Controller
             $order->customer_postal = $orderParams['postal'];
             $order->customer_phone = $orderParams['phonenumber'];
 
+            if($orderParams['isTracking'] == 1)
+            {
+                $order->is_tracking = 1;                                
+            }
+            else
+            {
+               $order->is_tracking = 0; 
+            }
+
             $order->save();    
 
             //---- create order infos ----//
@@ -267,6 +276,8 @@ class PaypalController extends Controller
                             'code' => $randCode,
                             'voucher' => '',
                             'notes' => '',
+                            'contact' => $orderParams['phonenumber'],
+                            'address' => $orderParams['address'],                            
                     );
 
             if($orderParams['notes'])

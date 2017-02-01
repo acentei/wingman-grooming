@@ -610,6 +610,12 @@
 				color: #fff;
 			}
 
+			a 
+			{
+				text-decoration: none;
+    			color: white;
+			}
+
 		</style>
 
 		
@@ -637,11 +643,13 @@
 			    	<div class="info-title">CUSTOMER INFORMATION</div>
 			    	<hr width="90%" style="margin-bottom:20px;">
 			    	<div class="receipt-details">
-			    		<b>ORDER CODE </b><br>&nbsb;&nbsb;&nbsb;{{$code}}</span><br><br>
-				    	<b>NAME </b><br>&nbsb;&nbsb;&nbsb;{{$name}}<br><br>
-				    	<b>E-MAIL </b><br>&nbsb;&nbsb;&nbsb; <span style="text-decoration: none;color: #fff;">{{$email}}</span><br><br>
-				    	<b>TIMESTAMP </b><br>&nbsb;&nbsb;&nbsb;{{$date}}<br><br>
-				    	<b>NOTES/SPECIAL INSTRUCTIONS </b><br>&nbsb;&nbsb;&nbsb;{{$notes}}<br><br>
+			    		<b>ORDER CODE </b><br>{{$code}}</span><br><br>
+				    	<b>NAME </b><br>{{$name}}<br><br>
+				    	<b>E-MAIL </b><br><span style="text-decoration: none;color: #fff;">{{$email}}</span><br><br>
+				    	<b>TIMESTAMP </b><br>{{$date}}<br><br>
+				    	<b>CONTACT NUMBER </b><br>{{$contact}}<br><br>
+				    	<b>SHIPPINE ADDRESS </b><br>{{$address}}<br><br>
+				    	<b>NOTES/SPECIAL INSTRUCTIONS </b><br>{{$notes}}<br><br>
 
 			    	</div>
 

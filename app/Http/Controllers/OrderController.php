@@ -79,7 +79,29 @@ class OrderController extends Controller
         $order = Order::find($id);
 
         $order->order_status = $request->status;
+        $order->tracking_number = $request->tracking;
 
+        //send email if status is not pending
+        if($request->status != "Pending")
+        {
+            if($order->is_tracking == 1)
+            {
+                //SEND E-RECEIPT TO EMAIL
+                $data = array(
+                                'orderCode' => $order->order_code,
+                                'tracking' => $request->tracking,   
+                                'email' => $order->customer_email,                                                
+                        );
+
+                Mail::send('pages.emails.tracking-email', $data, function($message) use ($data)
+                {
+                    $message->subject('Wingman Grooming E-Receipt');
+                    $message->from('ecommerce.mark8@gmail.com', 'Wingman Grooming');
+                    $message->to($data['email']);
+                });
+            }
+        }
+        
         $order->save();
 
         return redirect()->route('order.index');

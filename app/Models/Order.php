@@ -11,7 +11,7 @@ class Order extends Model
     protected $table = 'orders';
     
     protected $fillable = ['order_code','order_status','customer_full_name','customer_email','customer_address','customer_postal',
-                           'customer_phone','created_by','created_date','modified_by','modified_date','active','deleted'];
+                           'customer_phone','is_tracking','tracking_number','created_by','created_date','modified_by','modified_date','active','deleted'];
     
     protected $primaryKey = "order_id";
 
