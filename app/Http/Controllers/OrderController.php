@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\Models\Order;
 
 use Auth;
+use Mail;
 
 class OrderController extends Controller
 {
@@ -82,7 +83,7 @@ class OrderController extends Controller
         $order->tracking_number = $request->tracking;
 
         //send email if status is not pending
-        if($request->status != "Pending")
+        if($request->status == "On-Delivery")
         {
             if($order->is_tracking == 1)
             {

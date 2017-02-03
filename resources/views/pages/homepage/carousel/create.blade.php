@@ -55,6 +55,13 @@
                 </div>
 
                 <div class="form-group">   
+                    <label for="title" class="col-sm-2 control-label">Color</label>    
+                    <div class="col-sm-2">                                                      
+                        <input id="color" type="text" name="color" class="form-control jscolor" maxlength = "100"  />
+                    </div>       
+                </div>
+
+                <div class="form-group">   
                     <label for="title" class="col-sm-2 control-label">Photo</label>    
                     <div class="col-sm-3">   
                         <input type="file" class="imgInput" id="fileUpload" type="file" name="photo" required>

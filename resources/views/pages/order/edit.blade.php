@@ -48,6 +48,7 @@
                     <div class="col-sm-3">                              
                         <select name="status" class="form-control">
                             <option value="Pending" selected>Pending</option>
+                            <option value="On-Delivery">On-Delivery</option>                           
                             <option value="Delivered">Delivered</option>                           
                         </select>
                     </div>       

@@ -13,6 +13,7 @@
                         <li><a href="{{route('product-type.index')}}">Product Types</a></li>                        
                         <li><a href="{{route('promo-codes.index')}}">Promo Codes</a></li>   
                         <li><a href="{{route('order.index')}}">Orders</a></li>   
+                        <li><a href="{{route('on-delivery.index')}}">On-Delivery</a></li>   
                         <li><a href="{{route('sales.index')}}">Sales</a></li>   
                         <li><a href="{{route('inventory.index')}}">Inventory</a></li>   
                         <li><a href="{{route('shipping-cost.index')}}">Shipping Cost</a></li>   

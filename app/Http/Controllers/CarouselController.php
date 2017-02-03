@@ -60,6 +60,7 @@ class CarouselController extends Controller
         $carousel = new Carousel();        
               
         $carousel->title = $request->title;
+        $carousel->color = $request->color;
         $carousel->description = $request->description;
         $carousel->button_label = $request->btn_lbl;
         $carousel->link = $request->link;       
@@ -127,6 +128,7 @@ class CarouselController extends Controller
         $carousel = Carousel::find($id);        
               
         $carousel->title = $request->title;
+        $carousel->color = $request->color;
         $carousel->description = $request->description;
         $carousel->button_label = $request->btn_lbl;
         $carousel->link = $request->link;       

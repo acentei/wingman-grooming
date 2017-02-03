@@ -43,7 +43,7 @@
             @foreach($carousel as $caro)
                 <div class="shop-product-container prod-list">
                     <div class="shop-product-image">
-                        <img src="{{$caro->img}}" height="auto" width="100%" style="max-width:190px;">
+                        <img src="{{$caro->img}}" height="auto" width="100%" style="max-width:95%;">
                     </div>
 
                     <div class="shop-product-details">

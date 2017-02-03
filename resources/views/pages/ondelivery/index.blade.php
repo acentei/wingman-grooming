@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Order List
+    On-Delivery List
 @endsection
 
 {{--META TAGS--}}
@@ -10,7 +10,7 @@
 @endsection
 
 @section('meta-title')
-	Order List
+	On-Delivery List
 @endsection
 
 @section('meta-description')
@@ -32,7 +32,7 @@
 
 @section('content')
     <div class="cms-table">
-        <h1 class="h1-table-title"><b>Order List</b></h1>
+        <h1 class="h1-table-title"><b>On-Delivery List</b></h1>
 
         <br><br>
         <div class="custom-pagination">
@@ -63,9 +63,10 @@
                             <td>
                                 <span class="label label-danger">{{$order->order_status}}</span>                               
                             <td> 
+                        @elseif($order->order_status == "On-Delivery")
+                            <td><span class="label label-warning">{{$order->order_status}}</span></td>   
                         @elseif($order->order_status == "Delivered")
-                            <td><span class="label label-success">{{$order->order_status}}</span></td>
-                            <a class="btn btn-primary btn-order-status" href="#">Edit</a>
+                            <td><span class="label label-success">{{$order->order_status}}</span></td>                          
                         @endif
 
                         <td><a href="{{route('order.show',$order->order_id)}}" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-eye-open"></span></td>  

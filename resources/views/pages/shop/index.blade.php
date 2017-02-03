@@ -145,7 +145,7 @@
                                         </a>
 
                                         <a href="{{ route('shop.show',$product->slug) }}" class="shop-mob">
-                                            <span class="glyphicon glyphicon-search" style="color: black;"></span>
+                                            <span class="glyphicon glyphicon-search" style="color: white;"></span>
                                         </a>
                                     </div>
                                     
@@ -212,8 +212,8 @@
 
             $.ajax({
                 type: "POST",
-                //url: '/webapi/cart/add-cart',                
-                url: 'http://localhost:8080/wingmangrooming/public/index.php/webapi/cart/add-cart',                
+                url: '/webapi/cart/add-cart',                
+                //url: 'http://localhost:8080/wingmangrooming/public/index.php/webapi/cart/add-cart',                
                 data: {
                     "id" : id,
                     "code" : code,
@@ -368,6 +368,10 @@
             {
                 $('#dd-filter').val(window.location.href);
             } 
+            else
+            {
+                $("#dd-filter").val($("#dd-filter option:first").val());
+            }
 
         });
         

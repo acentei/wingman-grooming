@@ -119,14 +119,7 @@
                             
                               <div class="shop-product-image">
 
-                                  <a id="related-link-1" href="#" data-toggle = "modal" data-target = "#showProductDetails"  
-                                      data-image1="" data-image2="" 
-                                      data-image3="" data-image4=""
-                                      data-name="" data-price="" 
-                                      data-description="" data-details=""
-                                      data-related=""
-                                      data-id="" data-productcode="" 
-                                      data-stock="" data-brandname="" onclick="openrelated()">
+                                  <a id="related-link-1" target="_blank" href="#" >
                                       
                                       <img src="http://placehold.it/190x190" width="150px" height="150px">
                                   </a>
@@ -148,14 +141,7 @@
 
                         <div id="related-product-2" class="shop-product-container">
                             <div class="shop-product-image">
-                                <a id="related-link-2" href="#" data-toggle = "modal" data-target = "#showProductDetails"  
-                                    data-image1="" data-image2="" 
-                                    data-image3="" data-image4=""
-                                    data-name="" data-price="" 
-                                    data-description="" data-details=""
-                                    data-related=""
-                                    data-id="" data-productcode="" 
-                                    data-stock="" data-brandname="" onclick="openrelated()">
+                                <a id="related-link-2" target="_blank" href="#" >
                                     
                                     <img src="http://placehold.it/190x190" width="150px" height="150px">
                                 </a>
@@ -174,14 +160,7 @@
 
                         <div id="related-product-3" class="shop-product-container">
                             <div class="shop-product-image">
-                                <a id="related-link-3" href="#" data-toggle = "modal" data-target = "#showProductDetails"  
-                                    data-image1="" data-image2="" 
-                                    data-image3="" data-image4=""
-                                    data-name="" data-price="" 
-                                    data-description="" data-details=""
-                                    data-related=""
-                                    data-id="" data-productcode="" 
-                                    data-stock="" data-brandname="" onclick="openrelated()">
+                                <a id="related-link-3" target="_blank" href="#" >
                                     
                                     <img src="http://placehold.it/190x190" width="150px" height="150px">
                                 </a>
@@ -221,12 +200,14 @@
       $('div.zoomWindowContainer div').css({'background-image': 'url('+$image+')'});
 
       //for zooming the main image
-      $("#zoom-main").elevateZoom({        
-          zoomWindowFadeIn: 500,
-          zoomWindowFadeOut: 500,
-          lensFadeIn: 500,
-          lensFadeOut: 500
-      });
+//      $("#zoom-main").elevateZoom({        
+//          zoomWindowFadeIn: 500,
+//          zoomWindowFadeOut: 500,
+//          lensFadeIn: 500,
+//          lensFadeOut: 500
+//      });
+      
+      $("#zoom-main").elevateZoom({scrollZoom : true});      
 
       $brandName = $(e.relatedTarget).attr('data-brandName');
       $(this).find('.modal-shop-name').text($brandName);
@@ -317,25 +298,28 @@
       $tags = $(e.relatedTarget).attr('data-tags');
 
       $jsontags = JSON.parse($tags);
-
-      $jsontags = $jsontags.replace("{","");
-      $jsontags = $jsontags.replace("}","");
-
-      $(".details-properties").append('<br><div class="product-ingredients"><span font-family: BebasNeue;text-transform:uppercase; font-size: 18pt;> TAGS </span>');
-
-      for(count = 0; count < $jsontags.split(',').length; count++)
+        
+      if($jsontags)
       {
-          if(count < $jsontags.split(',').length-1)
-          {
-            $(".details-properties").append('<span style="padding-top: 10px; font-weight:bold;font-size: 11pt; font-family: Gotham;"><a target="_blank" href="http://localhost:8080/wingmangrooming/public/index.php/shop?search='+$jsontags.split(',')[count]+'">'+$jsontags.split(',')[count]+'</a>,&nbsp;</span>');
-          }
-          else
-          {
-            $(".details-properties").append('<span style="padding-top: 10px; font-weight:bold;font-size: 11pt; font-family: Gotham;"><a target="_blank" href="http://localhost:8080/wingmangrooming/public/index.php/shop?search='+$jsontags.split(',')[count]+'">'+$jsontags.split(',')[count]+'</a></span><br>');
-          }
           
-      }
+          $jsontags = $jsontags.replace("{","");
+          $jsontags = $jsontags.replace("}","");
 
+          $(".details-properties").append('<br><div class="product-ingredients"><span font-family: BebasNeue;text-transform:uppercase; font-size: 18pt;> TAGS </span>');
+
+          for(count = 0; count < $jsontags.split(',').length; count++)
+          {
+              if(count < $jsontags.split(',').length-1)
+              {
+                $(".details-properties").append('<span style="padding-top: 10px; font-weight:bold;font-size: 11pt; font-family: Gotham;"><a target="_blank" href="http://www.wingmangrooming.com/shop?search='+$jsontags.split(',')[count]+'">'+$jsontags.split(',')[count]+'</a>,&nbsp;</span>');
+              }
+              else
+              {
+                $(".details-properties").append('<span style="padding-top: 10px; font-weight:bold;font-size: 11pt; font-family: Gotham;"><a target="_blank" href="http://www.wingmangrooming.com/shop?search='+$jsontags.split(',')[count]+'">'+$jsontags.split(',')[count]+'</a></span><br>');
+              }
+
+          }
+      }
       for(count = 0; count <= 2; count++)
       {
           $pos = count+1;
@@ -363,21 +347,8 @@
                    $(this).find('#related-product-'+($pos)+' .prod-detail-name').text($jsonRelated[ctr]['name']);
                    $(this).find('#related-product-'+($pos)+' .prod-detail-price').text('PHP '+$jsonRelated[ctr]['price']);
                    $(this).find('#related-product-'+($pos)).css("display","inline-block");
-
-                   //add data to clickable link
-                   $(this).find('#related-link-'+$pos).attr('data-image1',$jsonRelated[ctr]['photo']);
-                   $(this).find('#related-link-'+$pos).attr('data-image2',$jsonRelated[ctr]['photo_2']);
-                   $(this).find('#related-link-'+$pos).attr('data-image3',$jsonRelated[ctr]['photo_3']);
-                   $(this).find('#related-link-'+$pos).attr('data-image4',$jsonRelated[ctr]['photo_4']);
-                   $(this).find('#related-link-'+$pos).attr('data-name',$jsonRelated[ctr]['name']);
-                   $(this).find('#related-link-'+$pos).attr('data-price',$jsonRelated[ctr]['price']);
-                   $(this).find('#related-link-'+$pos).attr('data-description',$jsonRelated[ctr]['description']);
-                   $(this).find('#related-link-'+$pos).attr('data-details',$jsonRelated[ctr]['property[]']);
-                   // $(this).find('#related-link-'+$pos).attr('data-related');
-                   $(this).find('#related-link-'+$pos).attr('data-id',$jsonRelated[ctr]['product_id']);
-                   $(this).find('#related-link-'+$pos).attr('data-productcode',$jsonRelated[ctr]['product_code']);
-                   $(this).find('#related-link-'+$pos).attr('data-stock',$jsonRelated[ctr]['stocks']);
-                   //$(this).find('#related-link-'+$pos).attr('data-brandname');
+                   $('#related-link-'+$pos).attr('href','http://www.wingmangrooming.com/shop-product/'+$jsonRelated[ctr]['slug']);
+                   
                 } 
                 else
                 {

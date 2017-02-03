@@ -648,7 +648,7 @@
 				    	<b>E-MAIL </b><br><span style="text-decoration: none;color: #fff;">{{$email}}</span><br><br>
 				    	<b>TIMESTAMP </b><br>{{$date}}<br><br>
 				    	<b>CONTACT NUMBER </b><br>{{$contact}}<br><br>
-				    	<b>SHIPPINE ADDRESS </b><br>{{$address}}<br><br>
+				    	<b>SHIPPING ADDRESS </b><br>{{$address}}<br><br>
 				    	<b>NOTES/SPECIAL INSTRUCTIONS </b><br>{{$notes}}<br><br>
 
 			    	</div>
@@ -680,7 +680,7 @@
 				            </div>
 				            
 				            <div class="the-cart">
-				                {{number_format($item['total'])}}				                 
+				                {{number_format($item['quantity'] * $item['price'])}}				                 
 				            </div>
 				            
 				        </div>

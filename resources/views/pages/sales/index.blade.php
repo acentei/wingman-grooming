@@ -34,6 +34,11 @@
     <div class="cms-table">
         <h1 class="h1-table-title"><b>Sales List</b></h1>
 
+        <br><br>
+        <div class="custom-pagination">
+            {!! $orders->render(new \Illuminate\Pagination\BootstrapThreePresenter($orders)) !!}
+        </div>
+
         <table class="table table-striped">
             <thead>
                 <tr>	

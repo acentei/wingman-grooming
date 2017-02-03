@@ -38,6 +38,10 @@
 
         <br>
         <br>
+        <div class="custom-pagination">
+            {!! $products->render(new \Illuminate\Pagination\BootstrapThreePresenter($products)) !!}
+        </div>
+        
         <div class="shop-products">
             
             @foreach($products as $product)

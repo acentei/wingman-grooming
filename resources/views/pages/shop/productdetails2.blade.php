@@ -119,7 +119,7 @@
 
                     <b>TAGS :</b>
                     @foreach($splitTags as $key => $tags)                                                        
-                        <a href="http://localhost:8080/wingmangrooming/public/index.php/shop?search={{$tags}}">{{$tags}}</a>,
+                        <a href="http://www.wingmangrooming.com/shop?search={{$tags}}">{{$tags}}</a>,
                     @endforeach
                 </div>
 
@@ -249,12 +249,15 @@
     $(document).ready(function(){
 
         //for zooming the main image
-        $("#zoom-main").elevateZoom({        
-          zoomWindowFadeIn: 500,
-          zoomWindowFadeOut: 500,
-          lensFadeIn: 500,
-          lensFadeOut: 500
-        });
+//        $("#zoom-main").elevateZoom({        
+//          zoomWindowFadeIn: 500,
+//          zoomWindowFadeOut: 500,
+//          lensFadeIn: 500,
+//          lensFadeOut: 500
+//        });
+        
+        //for zooming the main image
+        $("#zoom-main").elevateZoom({scrollZoom : true});
 
     });
 

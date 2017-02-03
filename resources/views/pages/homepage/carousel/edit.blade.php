@@ -54,6 +54,13 @@
                     </div>       
                 </div>
 
+                <div class="form-group">   
+                    <label for="title" class="col-sm-2 control-label">Color</label>    
+                    <div class="col-sm-2">                                                      
+                        <input id="color" type="text" name="color" value="{{$caro->color}}" class="form-control jscolor" maxlength = "100"  />
+                    </div>       
+                </div>
+
                 <div id="imgActive" class="form-group">
                     <label for="title" class="col-sm-2 control-label">Photo</label>    
                     <div class="col-sm-10">                              

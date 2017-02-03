@@ -42,6 +42,9 @@
 
         {{-- elevated zoom --}}
         <script src="{!! asset('/elevatedzoom/jquery.elevatezoom.js') !!}"></script>
+
+        {{--COLOR PICKER--}}
+        <script src="{{ URL::asset('/js/jscolor.min.js') }}"></script>
         
         @yield('scripts')
 

@@ -241,12 +241,12 @@ class PaypalController extends Controller
             //---- create order details (Product) ----//
             foreach ($itemParams as $key => $item) {
 
-                if($itemParams[$key]['name'] != 'Discount')
+                if(($itemParams[$key]['name'] != 'Discount') && ($itemParams[$key]['name'] != 'Shipping'))
                 {
                     $orderDetail = new OrderDetail();
 
                     $orderDetail->order_id = $order->order_id;
-                    $orderDetail->product_id = $itemParams[$key]['options']->id;
+                    $orderDetail->product_id = $itemParams[$key]['options']->id;                    
                     $orderDetail->quantity = $itemParams[$key]['quantity'];
                     $orderDetail->total = $itemParams[$key]['price'];               
 

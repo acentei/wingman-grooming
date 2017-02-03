@@ -65,6 +65,7 @@ Route::resource('sales','SalesController');
 Route::resource('inventory','InventoryController');
 Route::resource('shipping-cost','ShippingDetailsController');
 Route::resource('shop-product','ShopProductController');
+Route::resource('on-delivery','OndeliveryController');
 
 /* CUSTOM CONTROLLERS */
 Route::get('newsletter/{date}/{slug}', [

@@ -186,29 +186,7 @@ class PromoCodeController extends Controller
         $promo->start_date = date("Y-m-d", strtotime($request->start_date));
         $promo->expiration_date = date("Y-m-d", strtotime($request->expiration_date));
                 
-        $promo->save();
-
-        //SEND PROMO CODE TO SUBSCRIBERS
-        $data = array(
-                        'code' => $request->code,
-                        'description' => $request->description,
-                        'email' => '',
-                    );
-
-        $emails = Subscriber::where('isSubscribing',1)
-                            ->lists("email");
-
-        foreach ($emails as $email) 
-        {
-            $data['email'] = $email;
-
-            Mail::send('pages.emails.voucher-email', $data, function($message) use ($data)
-            {
-                $message->subject('Wingman Grooming Promo Code');
-                $message->from('ecommerce.mark8@gmail.com', 'Wingman Grooming');
-                $message->to($data['email']);
-            });
-        }
+        $promo->save();        
 
         return redirect()->route('promo-codes.index');   
     }
