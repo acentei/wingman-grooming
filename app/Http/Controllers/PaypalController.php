@@ -60,7 +60,9 @@ class PaypalController extends Controller
                 Session::put('shipping_id',$cartItem->rowId);
 
                 //$finalTotal = $total + 200;
-            }            
+            } 
+
+            Session::put('shipping_cost',$shipTotal);           
         }
         else
         {
@@ -68,6 +70,8 @@ class PaypalController extends Controller
             Cart::setTax($cartItem->rowId,0);
 
             Session::put('shipping_id',$cartItem->rowId);
+
+            Session::put('shipping_cost',0);
         }
 
         $total = str_replace(",", "", Cart::total());
@@ -90,6 +94,7 @@ class PaypalController extends Controller
                     Cart::setTax($cartItem->rowId,0);    
 
                     Session::put('discount_rowid',$cartItem->rowId);
+                    Session::put('discount_cost',$discountTotal);
                 }  
             }
             else if(Session::get('voucher-discount-type') == "Amount")
@@ -105,6 +110,7 @@ class PaypalController extends Controller
                     Cart::setTax($cartItem->rowId,0);    
 
                     Session::put('discount_rowid',$cartItem->rowId);
+                    Session::put('discount_cost',$discountTotal);
                 }    
             }
         }
@@ -238,6 +244,28 @@ class PaypalController extends Controller
                 $info->save();
             }
 
+            if(Session::get('discount_cost') != '')
+            {
+                $info = new OrderInfo();
+
+                $info->order_id = $order->order_id;
+                $info->name = "Discount";
+                $info->value = Session::get('discount_cost');
+
+                $info->save();
+            }
+
+            if(Session::get('shipping_cost') != '')
+            {
+                $info = new OrderInfo();
+
+                $info->order_id = $order->order_id;
+                $info->name = "Shipping";
+                $info->value = Session::get('shipping_cost');
+
+                $info->save();
+            }
+
             //---- create order details (Product) ----//
             foreach ($itemParams as $key => $item) {
 
@@ -290,18 +318,22 @@ class PaypalController extends Controller
                 $data['voucher'] = $orderParams['voucher'];
             }
 
+            //change mail sender
+            \Config::set('mail.username','noreply@wingmangrooming.com');
+            \Config::set('mail.password','123456789');
+
             Mail::send('pages.emails.receipt-email', $data, function($message) use ($data)
             {
                 $message->subject('Wingman Grooming E-Receipt');
-                $message->from('ecommerce.mark8@gmail.com', 'Wingman Grooming');
+                $message->from('noreply@wingmangrooming.com', 'Wingman Grooming');
                 $message->to($data['email']);
             });
 
             Mail::send('pages.emails.invoice-email', $data, function($message) use ($data)
             {
                 $message->subject('Wingman Grooming Sales Invoice');
-                $message->from('ecommerce.mark8@gmail.com', 'Wingman Grooming');
-                $message->to($data['email']);
+                $message->from('noreply@wingmangrooming.com', 'Wingman Grooming');
+                $message->to('sales@wingmangrooming.com');
             });            
 
             Cart::destroy();
@@ -312,6 +344,9 @@ class PaypalController extends Controller
             Session::put('voucher-discount-value','');
             Session::put('voucher-one-time','');
             Session::put('voucher-active','');
+            Session::put('shipping_id','');
+            Session::put('discount_cost')
+            Session::put('shipping_cost')
 
             return redirect()->to('/order/success');
 

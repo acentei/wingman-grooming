@@ -118,6 +118,10 @@ class PromoCodeController extends Controller
 
             $promo->save();
 
+            //change mail sender
+            \Config::set('mail.username','noreply@wingmangrooming.com');
+            \Config::set('mail.password','123456789');
+
             //SEND PROMO CODE TO SUBSCRIBERS
             $data = array(
                             'code' => $randCode,
@@ -125,16 +129,17 @@ class PromoCodeController extends Controller
                             'email' => '',
                         );
 
-            $emails = Subscriber::where('isSubscribing',1)
-                                ->lists("email");
+            //get subscribers
+            $subscribers = Subscriber::where('isSubscribing',1)->get()->toArray();
 
+            $emails = array_pluck($subscribers, 'email');
             
-            $data['email'] = $email;
+            $data['email'] = $emails;
 
-            Mail::send('pages.emails.voucher-email', $data, function($message) use ($data)
+            Mail::queue('pages.emails.voucher-email', $data, function($message) use ($data)
             {
-                $message->subject('Wingman Grooming Promo Code');
-                $message->from('ecommerce.mark8@gmail.com', 'Wingman Grooming');
+                $message->subject('Wingman Grooming Promo Code');                
+                $message->from('noreply@wingmangrooming.com', 'Wingman Grooming');                
                 $message->to($data['email']);
             });
         }

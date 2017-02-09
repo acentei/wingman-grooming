@@ -28,11 +28,15 @@ class InquiryController extends Controller
         				'content' => $request->comments,
         			 );
 
+        //change mail sender
+        \Config::set('mail.username','admin@wingmangrooming.com');
+        \Config::set('mail.password','cpto8784');
+
         Mail::send('pages.emails.inquiry-email', $data, function($message) use ($data)
         {
         	$message->subject($data['subject']);
-            $message->from($data['sender'], $data['fullname']);
-            $message->to('ecommerce.mark8@gmail.com');
+            $message->from('admin@wingmangrooming.com', $data['fullname']);
+            $message->to('cs@wingmangrooming.com');
         });
 
         return redirect()->to('/inquiry/sent');

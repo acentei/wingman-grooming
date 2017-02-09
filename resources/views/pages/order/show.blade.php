@@ -128,7 +128,18 @@
                                 <td>{{$details->quantity}}</td>
                                 <td><b>Php {{number_format($details->total)}}<b></td>
                             </tr>
-                        @endforeach                            
+                        @endforeach  
+
+                        @foreach($order['infos'] as $info)
+                            @if(($info->Name == 'Shipping') || ($info->Name == 'Discount'))
+                                <tr>
+                                    <td>{{$info->Name}}</td>
+                                    <td></td>
+                                    <td><b>Php {{number_format($info->Value)}}<b></td>
+                                </tr>                                
+                            @endif
+                        @endforeach   
+
                     </tbody>                     
                 </table>
 
@@ -140,12 +151,14 @@
                 </div>   
 
                 @foreach($order['infos'] as $info)
-                    <div class="form-group">   
-                        <label for="title" class="col-sm-2 control-label">{{$info->Name}}</label>    
-                        <div class="shop-show-col col-sm-10">                              
-                            {{$info->Value}}
-                        </div>       
-                    </div> 
+                    @if(($info->Name != 'Shipping') && ($info->Name != 'Discount'))
+                        <div class="form-group">   
+                            <label for="title" class="col-sm-2 control-label">{{$info->Name}}</label>    
+                            <div class="shop-show-col col-sm-10">                              
+                                {{$info->Value}}
+                            </div>       
+                        </div> 
+                    @endif
                 @endforeach                         
                 
             </div>

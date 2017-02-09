@@ -30,11 +30,15 @@ class WholesaleController extends Controller
         				'busadd' => $request->busadd,
         			 );
 
+        //change mail sender
+        \Config::set('mail.username','cs@wingmangrooming.com');
+        \Config::set('mail.password','123456789');
+
         Mail::send('pages.emails.wholesale-email', $data, function($message) use ($data)
         {
         	$message->subject('Wholesale Inquiry');
-            $message->from($data['sender'], $data['tradename']);
-            $message->to('ecommerce.mark8@gmail.com');
+            $message->from('cs@wingmangrooming.com', $data['tradename']);
+            $message->to('admin@wingmangrooming.com');
         });
 
         return redirect()->to('/wholesale-inquiry/sent');

@@ -9,6 +9,7 @@ use App\Http\Requests;
 
 use App\Models\NewsletterType;
 use App\Models\Newsletter;
+use App\Models\Subscriber;
 
 use Auth;
 use Mail;
@@ -139,16 +140,28 @@ class NewsletterController extends Controller
         
         $newsletter->save();
 
+        //change mail sender
+        \Config::set('mail.username','noreply@wingmangrooming.com');
+        \Config::set('mail.password','123456789');
+
+        //get subscribers
+        $subscribers = Subscriber::where('isSubscribing',1)->get()->toArray();
+
+        $emails = array_pluck($subscribers, 'email');
+
         $data = array(
                         'image' => $newsletter->image,
                         'url' => url('/').'/newsletter/'.date('Y-m-d').'/'.$newsletter->slug,
+                        'email' => '',                       
                     );
 
-        Mail::send('pages.emails.newsletter-email', $data, function($message) use ($data)
+        $data['email'] = $emails;
+
+        Mail::queue('pages.emails.newsletter-email', $data, function($message) use ($data)
         {
             $message->subject('Wingman Grooming Newsletter');
-            $message->from('ecommerce.mark8@gmail.com', 'Wingman Grooming');
-            $message->to('ecommerce.mark8@gmail.com');
+            $message->from('noreply@wingmangrooming.com', 'Wingman Grooming');
+            $message->to($data['email']);
         });
 
         return redirect()->route('newsletter.index');

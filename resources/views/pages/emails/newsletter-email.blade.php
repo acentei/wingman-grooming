@@ -91,8 +91,8 @@
 			    
 			    <a href="{{$url}}">
 				    <div class="response-img-container">		    
-				        {{-- <img src="{{$image}}">		     --}}
-				        <img src="https://s-media-cache-ak0.pinimg.com/originals/e5/e7/24/e5e724ae24af119df4052b59eddcc7e5.jpg">
+				        <img src="{{$image}}">
+				        {{-- <img src="https://s-media-cache-ak0.pinimg.com/originals/e5/e7/24/e5e724ae24af119df4052b59eddcc7e5.jpg"> --}}
 				    </div>	
 				</a>	    
 			</div>
