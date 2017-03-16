@@ -119,10 +119,12 @@
                                     Out of Stock!
                                 </div>      
 
-                            @elseif($interval->d <= 14)                      
-                                 <div class="item-isNew">
-                                    NEW!
-                                </div>   
+                            @elseif($interval->d <= 14)
+                                 <div class="item-status-container">                     
+                                     <div class="item-isNew">
+                                        NEW!
+                                     </div>
+                                </div>
                             @endif
 
                             <div class="shop-product-image">

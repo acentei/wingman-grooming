@@ -53,6 +53,27 @@
     {
         width: 100% !important;
     }
+    
+    /* Carousel */
+    .carousel-caption h1 
+    {
+        font-size: 15pt;
+        line-height: 12px;
+    }
+    .carousel-caption 
+    {
+        top: -35%;
+    }
+    .carousel-caption p
+    {
+        font-size: 8pt;
+        margin: 0;
+    }
+    .btn
+    {
+        padding: 3px 8px;
+        font-size: 11px;
+    }
 }
 
 @media screen and (max-width : 734px)
@@ -162,10 +183,6 @@
         float: none;
     }
     
-    .wingman-btn
-    {
-        background-color: #000;
-    }
     /* Homescreen */
     
     .content 
@@ -430,6 +447,7 @@
         padding-left: 10px;
         width: 100%;
         margin-bottom: 40px;
+        margin-left: 0;
     }
     
     .shop-right 
@@ -490,13 +508,15 @@
     .item-isNew 
     {
         top: 0;
-        left: 22%;
-        margin-left:0px;
     }
     
     .item-outofstock 
     {
         top: 0;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
     }
 
     /* MODAL */
@@ -859,10 +879,21 @@
         width: auto;
         height: 100%;
     }
+    
+    .carousel-caption h1
+     {
+        font-size: 20pt;
+        line-height: normal;
+    }
 
-    .carousel-indicators li, .carousel-indicators .active
+    .carousel-caption 
     {
-        width: 40px;
+        top: -8%;
+    }
+    
+    .carousel-caption p
+    {
+        font-size: 9pt;
     }
     
     /* Scrolling */
@@ -989,10 +1020,6 @@
         float: none;
     }
     
-    .wingman-btn
-    {
-        background-color: #000;
-    }
     
     /* Homescreen */
     
@@ -1256,7 +1283,10 @@
     .item-outofstock 
     {
         top: 0;
-        left: 8%;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
     }
     
     /* MODAL */
@@ -1584,17 +1614,15 @@
     
     .item-outofstock
     {
-        left: 13%;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
     }
 
     .prod-hover-details
     {
-        width: 100%;
-    }
-
-    .prod-hover-top 
-    {
-        margin: 5px auto 48% 1px;
+        width: 75%;
     }
     
     /* modal */
@@ -1777,7 +1805,7 @@
     
 }
 
-@media screen and (min-device-width : 1439px) and (max-device-width : 2098px) 
+@media screen and (min-width : 1439px) and (max-width : 2098px) 
 {
     .container
     {
@@ -1790,7 +1818,7 @@
     }    
 }
 
-@media screen and (min-device-width : 2099px)
+@media screen and (min-width : 2099px)
 {
     .container
     {
@@ -1939,6 +1967,7 @@
     .shop-left
     {
         text-align: center;
+        margin-left: 0;
     }
     
     .shop-listing
@@ -2038,23 +2067,40 @@
         background: #fff;
     }
     
+    .carousel-indicators li, .carousel-indicators .active
+    {
+        width: 12px;
+        height: 12px;
+        margin: 0 5px;
+    }
+    
     .mobdet-product > .carousel-indicators li
     {
-        border-radius: 0;
-        width: 40px;
-        height: 7px;
+        border-radius: 20px;
+        width: 12px;
+        height: 12px;
         background: #000;
         opacity: 0.5;
         border: none;
+        margin: 0 5px;
     }
     
     .mobdet-product > .carousel-indicators .active
     {
-        border-radius: 0;
+        border-radius: 20px;
         background-color: #000;
         opacity: 1;
-        width: 40px;
-        height: 8px;
+        width: 12px;
+        height: 12px;
+        margin: 0 5px;
+    }
+    
+    /* Footer */
+    .ft-box input#txtEmail
+    {
+        margin-left: 0;
+        width: 100%;
+        text-align: center;
     }
 }
 
@@ -2066,4 +2112,3 @@
 }
 
 /* NAVBAR ONLY TILL HERE */
-

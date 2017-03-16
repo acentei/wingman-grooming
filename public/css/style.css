@@ -1523,30 +1523,39 @@ input#txtEmail:focus {
     color: #ffffff;
     font-size: 8pt;
     background: #292828;
-    padding: 4.3px 20px;
+    padding: 4.3px 10px;
     text-decoration: none;
     border: none;
 }
 
-.item-isNew
+.item-status-container
 {
     position: absolute;
-    /* top: 3.2%; */
-    /* left: 2%; */
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 190px;
+    height: 20px;
+    background: transparent;
+    z-index: 2;
+}
+
+.item-isNew
+{
     width: 50px;
     height: 20px;
     background: #bb2229;
     color: #fff;
     font-style: italic;
-    z-index: 2;
     font-size: 10pt;
-    margin-left: 23px;
-    margin-top: 0px;
+    text-align: center;
 }
 
 .item-outofstock
 {
     position: absolute;
+    left: 0;
+    right: 0;
     margin: auto;
     width: 190px;
     height: 20px;
@@ -1559,7 +1568,6 @@ input#txtEmail:focus {
     font-weight: bold;
     letter-spacing: 1px;
     opacity: 0.6;
-    margin-left: 23px;
     margin-top: 0px;
 }
 
@@ -1603,6 +1611,14 @@ input#txtEmail:focus {
 {
     width: auto;
     height: 120px;
+    opacity: 0.5;
+    transition: ease-out 0.2s;
+}
+
+.modal-product-more-images img:hover
+{
+    opacity: 1;
+    transition: ease-in 0.2s;
 }
 
 .modal-product-image-ac img
@@ -2669,20 +2685,22 @@ input#txtEmail:focus {
 
 .carousel-indicators li
 {
-    border-radius: 0;
-    width: 60px;
-    height: 7px;
+    border-radius: 15px;
+    width: 18px;
+    height: 18px;
     background: #fff;
     opacity: 0.5;
+    margin: 0 10px;
 }
 
 .carousel-indicators .active
 {
-    border-radius: 0;
+    border-radius: 15px;
     background-color:#fff;
     opacity: 1;
-    width: 60px;
-    height: 8px;
+    width: 18px;
+    height: 18px;
+    margin: 0 10px;
 }
 
 .carousel-control
@@ -2697,24 +2715,45 @@ input#txtEmail:focus {
 }
 
 
-.wingman-btn
+.wingman-btn-white
 {
-    background-color: transparent;
+    background-color: #000;
     border: 1px solid #fff;
     color:#fff;
     text-transform: uppercase;
     transition: ease-out 0.5s;
 }
 
-.wingman-btn:active
+.wingman-btn-white:active
 {
     color:#fff;
 }
 
-.wingman-btn:hover
+.wingman-btn-white:hover
 {
     color:#000;
     background-color:#fff;    
+    transition: ease-in 0.3s;
+}
+
+.wingman-btn-black
+{
+    background-color: #fff;
+    border: 1px solid #000;
+    color:#000;
+    text-transform: uppercase;
+    transition: ease-out 0.5s;
+}
+
+.wingman-btn-black:active
+{
+    color:#000;
+}
+
+.wingman-btn-black:hover
+{
+    color:#fff;
+    background-color:#000;    
     transition: ease-in 0.3s;
 }
 
@@ -2986,21 +3025,23 @@ input#txtEmail:focus {
 }
 .carousel-product .carousel-indicators li
 {
-    border-radius: 0;
-    width: 50px;
-    height: 7px;
+    border-radius: 20px;
+    width: 18px;
+    height: 18px;
     background: #000;
     opacity: 0.5;
     border: none;
+    margin: 0 10px;
 }
 
 .carousel-product .carousel-indicators .active
 {
-    border-radius: 0;
+    border-radius: 20px;
     background-color:#000;
     opacity: 1;
-    width: 50px;
-    height: 8px;
+    width: 18px;
+    height: 18px;
+    margin: 0 10px;
 }
 
 /* Errors */
