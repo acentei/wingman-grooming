@@ -6,8 +6,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
-        <meta name="author" content="Mark Joseph Sibayan">
-        <meta name="keywords" content="wingman grooming,pomades,men's grooming">
+        <meta name="author" content="WINGMAN MERCATURA, INC.">
+        <meta name="keywords" content="wingman grooming,pomades,men's grooming,grooming,beard grooming">
         
         <meta property="og:url"           content="@yield('meta-url')" />
         <meta property="og:type"          content="website" />

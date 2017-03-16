@@ -24,7 +24,7 @@ class CartWebapi extends Controller
 	//add to session cart the item
     public function postAddCart(Request $request)
     {
-        $cartItem = Cart::add($request->id, $request->name, intval($request->qty), $request->price, ['id' => $request->id,'code' => $request->code,'image' => $request->image,'stock' => $request->stock]);
+        $cartItem = Cart::add($request->id, $request->name, intval($request->qty), $request->price, ['id' => $request->id,'code' => $request->code,'image' => $request->image,'stock' => $request->stock,'brand' => $request->brand]);
 		Cart::setTax($cartItem->rowId,0);
 
     	return Cart::content();
@@ -32,7 +32,7 @@ class CartWebapi extends Controller
 
     public function postAddCartDetails(Request $request)
     {
-        $cartItem = Cart::add($request->id, $request->name, intval($request->qty), $request->price, ['id' => $request->id,'code' => $request->code,'image' => $request->image,'stock' => $request->stock]);
+        $cartItem = Cart::add($request->id, $request->name, intval($request->qty), $request->price, ['id' => $request->id,'code' => $request->code,'image' => $request->image,'stock' => $request->stock,'brand' => $request->brand]);
         Cart::setTax($cartItem->rowId,0);
 
         return Cart::content();

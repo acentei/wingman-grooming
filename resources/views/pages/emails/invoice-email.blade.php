@@ -643,6 +643,7 @@
 			    	<div class="info-title">CUSTOMER INFORMATION</div>
 			    	<hr width="90%" style="margin-bottom:20px;">
 			    	<div class="receipt-details">
+                    
 			    		<b>ORDER CODE </b><br>{{$code}}</span><br><br>
 				    	<b>NAME </b><br>{{$name}}<br><br>
 				    	<b>E-MAIL </b><br><span style="text-decoration: none;color: #fff;">{{$email}}</span><br><br>
@@ -667,7 +668,7 @@
 
 				        <div class="cart-item-container">				            
 				            <div class="the-cart">				               				            				                
-				                {{$item['name']}}
+				                {{$item['options']->brand}} {{$item['name']}}
 				            </div>
 				            
 				            <div class="the-cart">

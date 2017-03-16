@@ -664,7 +664,7 @@
 
 				        <div class="cart-item-container">				            
 				            <div class="the-cart">				               				            				                
-				                {{$item['name']}}
+				                {{$item['options']->brand}} {{$item['name']}}
 				            </div>
 				            
 				            <div class="the-cart">

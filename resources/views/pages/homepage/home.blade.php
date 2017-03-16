@@ -56,7 +56,11 @@
                             <p style="color:#{{$caro->color}}">{{$caro->description}}</p>
 
                             @if($caro->link)
-                                <p><a class="btn wingman-btn" href="{{$caro->link}}" style="color: #{{$caro->color}}; border-color: #{{$caro->color}};" onmouseover="this.style.backgroundColor='#{{$caro->color}}';this.style.color='#FFFFFF';" onmouseout="this.style.backgroundColor='#FFFFFF';this.style.color='#{{$caro->color}}';" role="button">{{$caro->button_label}}</a></p>
+                                @if($caro->color == "FFFFFF")
+                                    <p><a class="btn wingman-btn" href="{{$caro->link}}" style="color: #{{$caro->color}}; border-color: #{{$caro->color}};" onmouseover="this.style.backgroundColor='#{{$caro->color}}';this.style.color='#000000';" onmouseout="this.style.backgroundColor='transparent';this.style.color='#{{$caro->color}}';" role="button">{{$caro->button_label}}</a></p>
+                                @else
+                                    <p><a class="btn wingman-btn" href="{{$caro->link}}" style="color: #{{$caro->color}}; border-color: #{{$caro->color}};" onmouseover="this.style.backgroundColor='#{{$caro->color}}';this.style.color='#FFFFFF';" onmouseout="this.style.backgroundColor='#FFFFFF';this.style.color='#{{$caro->color}}';" role="button">{{$caro->button_label}}</a></p>
+                                @endif
                             @endif
                         </div>
                     </div>   
@@ -70,7 +74,7 @@
 
                             @if($caro->link)
                                 @if($caro->color == "FFFFFF")
-                                    <p><a class="btn wingman-btn" href="{{$caro->link}}" style="color: #{{$caro->color}}; border-color: #{{$caro->color}};" onmouseover="this.style.backgroundColor='#{{$caro->color}}';this.style.color='#000000';" onmouseout="this.style.backgroundColor='#000000';this.style.color='#{{$caro->color}}';" role="button">{{$caro->button_label}}</a></p>
+                                    <p><a class="btn wingman-btn" href="{{$caro->link}}" style="color: #{{$caro->color}}; border-color: #{{$caro->color}};" onmouseover="this.style.backgroundColor='#{{$caro->color}}';this.style.color='#000000';" onmouseout="this.style.backgroundColor='transparent';this.style.color='#{{$caro->color}}';" role="button">{{$caro->button_label}}</a></p>
                                 @else
                                     <p><a class="btn wingman-btn" href="{{$caro->link}}" style="color: #{{$caro->color}}; border-color: #{{$caro->color}};" onmouseover="this.style.backgroundColor='#{{$caro->color}}';this.style.color='#FFFFFF';" onmouseout="this.style.backgroundColor='#FFFFFF';this.style.color='#{{$caro->color}}';" role="button">{{$caro->button_label}}</a></p>
                                 @endif

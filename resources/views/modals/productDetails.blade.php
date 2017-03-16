@@ -53,7 +53,7 @@
                                         <input id="prodQty" class="prh-num" type="number" min="1" max="" value="1" placeholder="1">                                        
                                          
                                         <input id="prodAddCart" type="button"  class="prh-btn" value="ADD TO CART" data-href="{{ route('shop.index') }}" data-id="" data-productcode="" data-checkout="{{route('cart.index')}}"
-                                        data-image="" data-name="" data-price="" data-stock=""
+                                        data-image="" data-name="" data-price="" data-stock="" data-brand=""
                                         data-toggle = "modal" data-target = "#addCartSuccess">  
                                     </div>
 
@@ -281,6 +281,7 @@
       $(this).find('#prodAddCart').attr('data-image',$image);
       $(this).find('#prodAddCart').attr('data-price',$price);
       $(this).find('#prodAddCart').attr('data-stock',$stock);
+      $(this).find('#prodAddCart').attr('data-brand',$brandName);
       
       $(".details-properties").empty();
 
@@ -340,16 +341,21 @@
             $pos = ctr+1;
             if($jsonRelated[ctr])
             {
-                  //console.log('TOTAL_ITEM_COUNT: '+$jsonRelated.length+'POS:'+ $pos +'; PROD_ID:'+$prodId+'; OTHER_PROD_ID:'+$jsonRelated[ctr]['product_id']);
-                if($jsonRelated[ctr]['product_id'] != $prodId)
-                {           
-                   $(this).find('#related-product-'+($pos)+' img').attr('src',$jsonRelated[ctr]['photo']);
-                   $(this).find('#related-product-'+($pos)+' .prod-detail-name').text($jsonRelated[ctr]['name']);
-                   $(this).find('#related-product-'+($pos)+' .prod-detail-price').text('PHP '+$jsonRelated[ctr]['price']);
-                   $(this).find('#related-product-'+($pos)).css("display","inline-block");
-                   $('#related-link-'+$pos).attr('href','http://www.wingmangrooming.com/shop-product/'+$jsonRelated[ctr]['slug']);
-                   
-                } 
+                if($jsonRelated[ctr]['deleted'] == 0)
+                {  
+                    if($jsonRelated[ctr]['product_id'] != $prodId)
+                    {     
+                        $(this).find('#related-product-'+($pos)+' img').attr('src',$jsonRelated[ctr]['photo']);
+                        $(this).find('#related-product-'+($pos)+' .prod-detail-name').text($jsonRelated[ctr]['name']);
+                        $(this).find('#related-product-'+($pos)+' .prod-detail-price').text('PHP '+$jsonRelated[ctr]['price']);
+                        $(this).find('#related-product-'+($pos)).css("display","inline-block");
+                        $('#related-link-'+$pos).attr('href','http://www.wingmangrooming.com/shop-product/'+$jsonRelated[ctr]['slug']);
+                    } 
+                    else
+                    {
+                       $(this).find('#related-product-'+$pos).css("display","none");
+                    } 
+                }
                 else
                 {
                    $(this).find('#related-product-'+$pos).css("display","none");
@@ -400,12 +406,13 @@
         });
 
         //for zooming the main image
-        $("#zoom-main").elevateZoom({        
-            zoomWindowFadeIn: 500,
-            zoomWindowFadeOut: 500,
-            lensFadeIn: 500,
-            lensFadeOut: 500
-        });
+//        $("#zoom-main").elevateZoom({        
+//            zoomWindowFadeIn: 500,
+//            zoomWindowFadeOut: 500,
+//            lensFadeIn: 500,
+//            lensFadeOut: 500
+//        });
+        $("#zoom-main").elevateZoom({scrollZoom : true});
 
     });
 
@@ -419,6 +426,7 @@
         var image = $(this).attr("data-image");
         var price = $(this).attr("data-price");            
         var stock = $(this).attr("data-stock");            
+        var brand = $(this).attr("data-brand");            
                     
         var qty = $('#prodQty').val();
 
@@ -435,6 +443,7 @@
                 "qty" : parseInt(qty),
                 "price" : price,
                 "stock" : stock,
+                "brand" : brand,
             },  
             success: function(data) {
                 console.log(data);                         

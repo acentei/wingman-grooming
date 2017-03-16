@@ -66,9 +66,9 @@
                 <div class="the-cart">
                    
                     <img src="{{$item->options->image}}" align="left" width="150px" height="150px">
-                    
-
-                    {{$item->name}}
+                                        
+                    {{$item->options->brand}}<br> {{$item->name}}                   
+                   
                 </div>
                 
                 <div class="the-cart">
@@ -201,7 +201,8 @@
 
     <div class="full">
         <input id="input-terms" name="isTracking" type="checkbox" value="1" />
-        Request for a Tracking Number        
+        <input name="isTracking" type="hidden" value="0"/>
+        Request for a Tracking Number 
     </div>
     
 </div>

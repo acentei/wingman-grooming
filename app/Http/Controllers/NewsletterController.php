@@ -143,6 +143,8 @@ class NewsletterController extends Controller
         //change mail sender
         \Config::set('mail.username','noreply@wingmangrooming.com');
         \Config::set('mail.password','123456789');
+        \Config::set('mail.from.address','noreply@wingmangrooming.com');
+        \Config::set('mail.from.name','Wingman Grooming');
 
         //get subscribers
         $subscribers = Subscriber::where('isSubscribing',1)->get()->toArray();
@@ -156,12 +158,12 @@ class NewsletterController extends Controller
                     );
 
         $data['email'] = $emails;
-
+                
         Mail::queue('pages.emails.newsletter-email', $data, function($message) use ($data)
-        {
-            $message->subject('Wingman Grooming Newsletter');
+        {            
             $message->from('noreply@wingmangrooming.com', 'Wingman Grooming');
             $message->to($data['email']);
+            $message->subject('Wingman Grooming Newsletter');
         });
 
         return redirect()->route('newsletter.index');
@@ -179,6 +181,11 @@ class NewsletterController extends Controller
                                 ->where('deleted',0)
                                 ->where('slug',$slug)
                                 ->get();
+                
+        if(count($newsletter) == 0)
+        {
+            return view('errors.404');
+        }
         
         $recent =  Newsletter::where('newsletter_id','!=',$newsletter[0]->newsletter_id)
                               ->where('active',1)

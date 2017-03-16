@@ -124,14 +124,14 @@
                                 $subtotal=$subtotal+$details->total;
                             ?>
                             <tr>
-                                <td>{{$details['product']->name }}</td>
+                                <td><b>{{$details['product']['brand']->display_name }}'s</b> {{$details['product']->name }}</td>
                                 <td>{{$details->quantity}}</td>
                                 <td><b>Php {{number_format($details->total)}}<b></td>
                             </tr>
                         @endforeach  
 
                         @foreach($order['infos'] as $info)
-                            @if(($info->Name == 'Shipping') || ($info->Name == 'Discount'))
+                            @if($info->Name == 'Shipping') 
                                 <tr>
                                     <td>{{$info->Name}}</td>
                                     <td></td>
@@ -139,14 +139,37 @@
                                 </tr>                                
                             @endif
                         @endforeach   
+                                        
+                        @foreach($order['infos'] as $info)
+                            @if($info->Name == 'Discount')
+                                <tr>
+                                    <td>{{$info->Name}}</td>
+                                    <td></td>
+                                    <td><b>Php {{number_format($info->Value)}}<b></td>
+                                </tr>                                
+                            @endif
+                        @endforeach
 
                     </tbody>                     
                 </table>
 
                 <div class="form-group">   
                     <label for="title" class="col-sm-9 control-label">SUBTOTAL</label>    
-                    <div class="shop-show-col col-sm-2">                              
-                       Php <b>{{number_format($subtotal)}}</b>
+                    <div class="shop-show-col col-sm-2">    
+                        
+                        <?php 
+                            $total=0;
+                        ?>
+                        
+                        @foreach($order['infos'] as $info)
+                            @if(($info->Name == 'Shipping') || ($info->Name == 'Discount'))
+                                <?php 
+                                    $total=$total+$info->Value;
+                                ?>                    
+                            @endif
+                        @endforeach  
+                                        
+                        Php <b>{{number_format($subtotal + $total)}}</b>  
                     </div>       
                 </div>   
 
@@ -155,7 +178,7 @@
                         <div class="form-group">   
                             <label for="title" class="col-sm-2 control-label">{{$info->Name}}</label>    
                             <div class="shop-show-col col-sm-10">                              
-                                {{$info->Value}}
+                                {{strtoupper($info->Value)}}
                             </div>       
                         </div> 
                     @endif

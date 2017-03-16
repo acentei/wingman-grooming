@@ -110,8 +110,31 @@
                                
                 <div class="form-group">
                     <label for="title" class="col-sm-2 control-label">Photo 2</label>    
-                    <div class="col-sm-10">                              
+                    <div class="col-sm-10">                           
                         <img class="imagePreview" src="{{$product->photo_2}}" alt="{{$product->name}}'s 2nd photo image" /><br><br>
+                        
+                        {!! Form::model($product, [		
+                            'method' => 'PUT',
+                            'route' => ['product.update',$product->product_id],
+                            'files' => 'true'
+                        ]) !!}
+                        
+                        {!! Form::button('<span class="glyphicon glyphicon-trash"></span> <b>Remove Image</b>', 
+                            array(  
+                                    'name' => 'photo_2',
+                                    'class' => 'btn btn-danger',
+                                    'data-toggle' => 'modal',
+                                    'data-target' => '#confirmDelete',
+                                    'data-title' => 'Remove product photo 2',
+                                    'data-message' => 'Are you sure you want to remove this photo?',
+                                    'data-btncancel' => 'btn-default',
+                                    'data-btnaction' => 'btn-danger',
+                                    'data-btntxt' => 'Confirm'
+                            )) 
+                        !!}
+
+                        {!! Form::close() !!}
+                        
                     </div>
                 </div>
                                 
@@ -119,6 +142,7 @@
                     <label for="title" class="col-sm-2 control-label">Photo 3</label>    
                     <div class="shop-show-col col-sm-10">                              
                         <img class="imagePreview" src="{{$product->photo_3}}" alt="{{$product->name}}'s 3rd photo image" /><br><br>
+                        <a class="btn btn-danger">Remove Image</a>
                     </div>
                 </div>
                                 
@@ -126,6 +150,7 @@
                     <label for="title" class="col-sm-2 control-label">Photo 4</label>    
                     <div class="shop-show-col col-sm-10">                              
                         <img class="imagePreview" src="{{$product->photo_4}}" alt="{{$product->name}}'s 4th photo image" /><br><br>
+                        <a class="btn btn-danger">Remove Image</a>
                     </div>
                 </div>
                                 

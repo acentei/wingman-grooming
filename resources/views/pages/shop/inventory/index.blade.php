@@ -33,6 +33,10 @@
 @section('content')
     <div class="cms-table">
         <h1 class="h1-table-title"><b>Product List</b></h1>
+        
+        <div class="custom-pagination">
+            {!! $products->render(new \Illuminate\Pagination\BootstrapThreePresenter($products)) !!}
+        </div>
 
         <div class="shop-products">
             

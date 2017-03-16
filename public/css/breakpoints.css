@@ -235,6 +235,7 @@
     .nl-article-img 
     {
         margin: auto;
+        width: 70%;
     }
     
     /* gallery */
@@ -1786,7 +1787,7 @@
     .cart-title 
     {
         margin-right: 20px;
-    }
+    }    
 }
 
 @media screen and (min-device-width : 2099px)

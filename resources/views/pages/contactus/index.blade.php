@@ -45,7 +45,7 @@
     <div class="quotes"> 
         <div class="contact-note">
             <p>
-                If you have any questions, comments, wholesale inquiries or concerns, feel free to reach out us here. We would love to hear from you.
+                If you have any questions, comments, inquiries or concerns, feel free to reach out us here. We would love to hear from you.
             </p>
         </div>    
     </div>

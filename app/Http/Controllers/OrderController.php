@@ -49,9 +49,9 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        $order = Order::with('details','details.product','infos')
+        $order = Order::with('details','details.product.brand','infos')
         			  ->find($id);
-
+               
         return view('pages.order.show',['order' => $order]);
     }
 
@@ -93,11 +93,15 @@ class OrderController extends Controller
                                 'tracking' => $request->tracking,   
                                 'email' => $order->customer_email,                                                
                         );
-
+                
+                //change mail sender
+                \Config::set('mail.username','noreply@wingmangrooming.com');
+                \Config::set('mail.password','123456789');
+                
                 Mail::send('pages.emails.tracking-email', $data, function($message) use ($data)
                 {
-                    $message->subject('Wingman Grooming E-Receipt');
-                    $message->from('ecommerce.mark8@gmail.com', 'Wingman Grooming');
+                    $message->subject('Tracking Number');
+                    $message->from('noreply@wingmangrooming.com', 'Wingman Grooming');
                     $message->to($data['email']);
                 });
             }

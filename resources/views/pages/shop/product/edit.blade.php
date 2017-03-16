@@ -231,7 +231,7 @@
                 <div class="form-group">   
                     <label for="title" class="col-sm-2 control-label">Tags</label>    
                     <div class="col-sm-10">                              
-                        <textarea name="tags" rows="5" class="form-control" style="resize:none;">{{$product->tags}}</textarea>
+                        <textarea name="tags" rows="5" class="form-control" style="resize:none;">{{str_replace(array('{','}'), "", $product->tags)}}</textarea>
                     </div>       
                 </div>
                                 

@@ -155,7 +155,7 @@
                                             <div class="prod-hover-add">
                                                 <input id="numQty{{$key}}" class="prh-num itemQty" type="number" value="1" min="1" max="{{$product->stocks}}" placeholder="1">
                                                 <input id="btnAC{{$key}}" type="button"  class="prh-btn addCart" value="ADD TO CART" data-href="{{ route('shop.index') }}" data-id="{{$product->product_id}}" data-productcode="{{$product->product_code}}" data-checkout="{{route('cart.index')}}"
-                                                    data-image="{{$product->photo}}" data-name="{{$product->name}}" data-stock="{{$product->stocks}}" data-price="{{$product->price}}"
+                                                    data-image="{{$product->photo}}" data-name="{{$product->name}}" data-stock="{{$product->stocks}}" data-price="{{$product->price}}" data-brand="{{$product['brand']->display_name}}"
                                                     data-toggle = "modal" data-target = "#addCartSuccess">                                       
 
                                             </div>
@@ -202,13 +202,12 @@
             var image = $(this).attr("data-image");
             var price = $(this).attr("data-price");
             var stock = $(this).attr("data-stock");
+            var brand = $(this).attr("data-brand");
 
             var input = $(this).attr("id").replace('btnAC','');             
             var qty = $('#numQty'+input).val();
 
             $(this).attr('data-quantity', qty);
-
-            console.log('id: '+id);
 
             $.ajax({
                 type: "POST",
@@ -222,6 +221,7 @@
                     "qty" : qty,
                     "price" : price,
                     "stock" : stock,
+                    "brand" : brand,
                 },  
                 success: function(data) {
                     //console.log(data);                         

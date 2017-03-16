@@ -204,8 +204,8 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request,$id)
+    {   
         $product = Product::find($id);
         
         $slug = Str::slug($request->pcode.' '.$request->pname);        
@@ -243,9 +243,14 @@ class ProductController extends Controller
         $url = url('/').'/images/product';
         
         $file_list = Input::file();
-                
-        foreach($file_list as $key => $value) 
+        
+        if(!$request->hasFile('photo'))
         {
+            return 'no input';
+        }
+                        
+        foreach($file_list as $key => $value) 
+        {     
             if($request->hasFile($key)) 
             {
                 $files = Input::file($key);
@@ -261,7 +266,7 @@ class ProductController extends Controller
                 $image['imagePath'] = $url.'/'.$product->product_id.'/'.$name;
 
                 $product->$key = $image['imagePath'];                
-            }           
+            }             
         }
         
         $product->save();

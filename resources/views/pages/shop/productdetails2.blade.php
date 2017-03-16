@@ -74,7 +74,7 @@
             <div class="details-right">
 
                 @if($product->stocks == 0)
-                    <div id="outstock" class="prod-outofstock" style="display:none;">
+                    <div id="outstock" class="prod-outofstock">
                             Out of Stock!
                         </div>
                 @else
@@ -83,7 +83,7 @@
                         <div class="prod-hover-add">
                             <input id="prodQty" class="prh-num" type="number" min="1" max="{{$product->stocks}}" value="1" placeholder="1">            
 
-                            <input id="prodAddCart" type="button"  class="prh-btn addCart" value="ADD TO CART" data-href="{{ route('shop.index') }}" data-id="{{$product->product_id}}" data-productcode="{{$product->product_code}}" data-checkout="{{route('cart.index')}}" data-image="{{$product->photo}}" data-name="{{$product->name}}" data-stock="{{$product->stocks}}" data-price="{{$product->price}}" data-toggle = "modal" data-target = "#addCartSuccess">  
+                            <input id="prodAddCart" type="button"  class="prh-btn addCart" value="ADD TO CART" data-href="{{ route('shop.index') }}" data-id="{{$product->product_id}}" data-productcode="{{$product->product_code}}" data-checkout="{{route('cart.index')}}" data-image="{{$product->photo}}" data-name="{{$product->name}}" data-stock="{{$product->stocks}}" data-price="{{$product->price}}" data-brand="{{$product['brand']->display_name}}" data-toggle = "modal" data-target = "#addCartSuccess">  
                         </div>
 
                     </div>
@@ -184,6 +184,7 @@
         var image = $(this).attr("data-image");
         var price = $(this).attr("data-price");            
         var stock = $(this).attr("data-stock");            
+        var brand = $(this).attr("data-brand");            
                     
         var qty = $('#prodQty').val();
 
@@ -200,6 +201,8 @@
                 "qty" : parseInt(qty),
                 "price" : price,
                 "stock" : stock,
+                "brand" : brand,
+                
             },  
             success: function(data) {
                 console.log(data);                         
@@ -236,12 +239,13 @@
         });
 
         //for zooming the main image
-        $("#zoom-main").elevateZoom({        
-            zoomWindowFadeIn: 500,
-            zoomWindowFadeOut: 500,
-            lensFadeIn: 500,
-            lensFadeOut: 500
-        });
+//        $("#zoom-main").elevateZoom({        
+//            zoomWindowFadeIn: 500,
+//            zoomWindowFadeOut: 500,
+//            lensFadeIn: 500,
+//            lensFadeOut: 500
+//        });
+        $("#zoom-main").elevateZoom({scrollZoom : true});
 
     });
 
