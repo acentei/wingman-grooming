@@ -70,6 +70,8 @@
                     </select>
                 </div>
                 
+                <br>
+                
                 <div class="shop-browse-title">
                     BROWSE BY BRANDS
                 </div>

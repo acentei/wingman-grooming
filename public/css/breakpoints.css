@@ -440,6 +440,7 @@
         padding-bottom: 0; 
         color: #717171;
         display: inline-block;
+        width: 150px;
     }
     
     .shop-left 
@@ -1991,7 +1992,7 @@
     .mobdet-browse-list
     {
         display:inline-block;
-        width: 70%;
+        width: 150px;
         background:#eee;
         border-color:#999;
         font-family: Gotham;
